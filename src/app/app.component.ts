@@ -22,7 +22,12 @@ import { OktaAuth } from '@okta/okta-auth-js';
 export class AppComponent {
   title = 'custom-login';
 
-  constructor(private oktaAuth: OktaAuth, public authService: OktaAuthStateService) {
+  constructor(private oktaAuth: OktaAuth, public authStateService: OktaAuthStateService) {
+  }
+
+
+  async login() {
+    await this.oktaAuth.signInWithRedirect({ originalUri: '/' });
   }
 
   async logout() {

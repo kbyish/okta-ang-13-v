@@ -21,8 +21,10 @@ export default {
   oidc: {
     clientId: '0oa2yjbi07H9YNwQI5d7',
     issuer: 'https://dev-00314289.okta.com/oauth2/default',
-    redirectUri: 'http://localhost:4200/login/callback',
+    // redirectUri: 'http://localhost:4200/login/callback',
+    redirectUri: '/login/callback',
     scopes: ['openid', 'profile', 'email'],
+    pkce: true,
     // testing: {
     //   disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`
     // }
