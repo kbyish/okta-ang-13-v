@@ -21,15 +21,19 @@ import {
   OktaCallbackComponent,
 } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
+
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 import sampleConfig from './app.config';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from 'src/environments/environment';
+
 
 // const oktaConfig = Object.assign({
 //   onAuthRequired: (_: undefined, injector: Injector) => {
@@ -50,30 +54,6 @@ const oidc = {
 
 };
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'login/callback',
-    component: OktaCallbackComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [OktaAuthGuard]
-  },
-  {
-    path: 'messages',
-    component: MessagesComponent,
-    canActivate: [OktaAuthGuard]
-  },
-];
 
 @NgModule({
   declarations: [
@@ -86,7 +66,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule, //RouterModule.forRoot(appRoutes),
     OktaAuthModule,
   ],
   providers: [
